@@ -1,0 +1,90 @@
+<body style="margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #00FFFF,#FF0000); background-attachment: fixed;">
+
+  <!-- Header Navigation -->
+  <header style="position: sticky; top: 0; background: rgba(0, 0, 0, 0.8); padding: 15px 0; z-index: 999;">
+    <div class="container" style="max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+      <h2 style="color: #fff; font-weight: bold;">WELCOME TO HARISH</h2>
+      <nav>
+        <a href="menu.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Bus Ticket</a>
+        <a href="train.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Train Ticket</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Animated Heading -->
+  <section style="padding: 60px 0 20px 0; text-align: center;">
+    <h1 style="color: white; font-size: 50px; font-weight: 800; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); animation: fadeIn 2s ease-in-out;">Book Your Bus Ticket</h1>
+  </section>
+
+  <!-- Booking Form Card with Glassmorphism -->
+  <div style="max-width: 600px; margin: auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); backdrop-filter: blur(10px); color: white;">
+    <form action="bus.html" method="get">
+      <h2 style="text-align: center; color: #fff; margin-bottom: 30px;">🚌 Ticket Booking</h2>
+
+      <label for="departureLocation">📍 Departure Location:</label>
+      <select id="departureLocation" name="Departure Location" required>
+        <option value="">Select Departure</option>
+        <option>Virudhunagar</option><option>Chennai</option><option>Coimbatore</option>
+        <option>Madurai</option><option>Bangalore</option><option>Nagercoil</option>
+        <option>Kanyakumari</option><option>Dindigul</option><option>Ramanathapuram</option><option>Ooty</option>
+      </select>
+
+      <label for="destinationLocation">📍 Destination Location:</label>
+      <select id="destinationLocation" name="Destination Location" required>
+        <option value="">Select Destination</option>
+        <option>Chennai</option><option>Madurai</option><option>Coimbatore</option>
+        <option>Virudhunagar</option><option>Bangalore</option><option>Nagercoil</option>
+        <option>Kanyakumari</option><option>Dindigul</option><option>Ramanathapuram</option><option>Ooty</option>
+      </select>
+
+      <label for="travelDate">📅 Travel Date:</label>
+      <input type="date" id="travelDate" name="travelDate" required>
+
+      <label for="passengers">👥 Number of Passengers:</label>
+      <input type="number" id="passengers" name="passengers" min="1" max="10" value="1" required>
+
+      <label for="busType">🚌 Bus Type:</label>
+      <select id="busType" name="busType" required>
+        <option value="AC Bus">AC Bus</option>
+        <option value="Non-AC">Non-AC</option>
+        <option value="Sleeper">Sleeper </option>
+      </select>
+
+      <button type="submit" style="width: 100%; margin-top: 25px; padding: 12px; background: #ffffff; color: #0072ff; font-weight: bold; border: none; border-radius: 8px; transition: all 0.3s ease;">Search Bus</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer style="text-align: center; color: white; margin-top: 60px; padding-bottom: 20px;">
+    <p>© 2025 Harish's Travel Portal. All rights reserved.</p>
+  </footer>
+
+  <!-- Animation Styles -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    select, input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    label {
+      font-weight: 500;
+      margin-top: 10px;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #00c6ff;
+      color: white;
+      transform: scale(1.02);
+    }
+  </style>
+</body>
