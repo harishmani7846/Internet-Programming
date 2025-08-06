@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h2 {
+      text-align: center;
+      color: #2e3b4e;
+    }
+    .train-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .train-card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .train-card h3 {
+      margin: 0 0 10px;
+    }
+    .train-card p {
+      margin: 4px 0;
+    }
+    .book-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .book-btn:hover {
+      background-color: #218838;
+    }
+    #train-booking-details {
+      display: none;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #e3fcec;
+      border: 1px solid #c6e4d4;
+      border-radius: 8px;
+    }
+    #train-booking-details h3 {
+      margin-top: 0;
+    }
+    #confirm-train-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #0072FF, #00FFFF);
+      animation: fadeInBody 1.5s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      animation: slideDown 1s ease-in-out;
+    }
+
+    .bus-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .bus-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .bus-card:nth-child(1) { animation-delay: 0.2s; }
+    .bus-card:nth-child(2) { animation-delay: 0.4s; }
+    .bus-card:nth-child(3) { animation-delay: 0.6s; }
+    .bus-card:nth-child(4) { animation-delay: 0.8s; }
+    .bus-card:nth-child(5) { animation-delay: 1s; }
+    .bus-card:nth-child(6) { animation-delay: 1.2s; }
+    .bus-card:nth-child(7) { animation-delay: 1.4s; }
+    .bus-card:nth-child(8) { animation-delay: 1.6s; }
+    .bus-card:nth-child(9) { animation-delay: 1.8s; }
+    .bus-card:nth-child(10) { animation-delay: 2s; }
+
+    .bus-card h3 {
+      margin: 0 0 10px;
+    }
+
+    .bus-card p {
+      margin: 5px 0;
+    }
+
+    .book-btn {
+      background-color: #0072FF;
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .book-btn:hover {
+      background-color: #0056cc;
+      transform: scale(1.05);
+    }
+
+    #booking-details {
+      display: none;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      border-radius: 8px;
+      animation: slideUp 0.5s ease-in-out forwards;
+    }
+
+    #booking-details h3 {
+      margin-top: 0;
+    }
+
+    #confirm-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #confirm-btn:hover {
+      background-color: #1f8a3c;
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeInBody {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h2>Available Trains</h2>
+
+  <div class="train-container">
+    <div class="train-card">
+      <h3>Train: Pandian Express</h3>
+      <p>Time: 06:00 AM</p>
+      <p>Price: ₹320</p>
+      <button class="book-btn" onclick="bookTrain('Pandian Express', '06:00 AM', '₹320')">Book Now</button>
+    </div>
+    <div class="train-card">
+      <h3>Train: Vaigai Express</h3>
+      <p>Time: 09:45 AM</p>
+      <p>Price: ₹290</p>
+      <button class="book-btn" onclick="bookTrain('Vaigai Express', '09:45 AM', '₹290')">Book Now</button>
+    </div>
+    <div class="train-card">
+      <h3>Train: Nellai Express</h3>
+      <p>Time: 02:30 PM</p>
+      <p>Price: ₹400</p>
+      <button class="book-btn" onclick="bookTrain('Nellai Express', '02:30 PM', '₹400')">Book Now</button>
+    </div>
+	<div class="train-card">
+      <h3>Train: Tejas Express</h3>
+      <p>Time: 07:00 PM</p>
+      <p>Price: ₹550</p>
+      <button class="book-btn" onclick="bookTrain('Tejas Express', '07:00 PM', '₹550')">Book Now</button>
+    </div>
+        <div class="train-card">
+       <h3>Train: Duronto Express</h3>
+      <p>Time: 10:10 PM</p>
+      <p>Price: ₹600</p>
+      <button class="book-btn" onclick="bookTrain('Duronto Express', '10:10 PM', '₹600')">Book Now</button>
+    </div>
+       <div class="train-card">
+        <h3>Train: Kanyakumari Express</h3>
+      <p>Time: 11:30 PM</p>
+      <p>Price: ₹370</p>
+      <button class="book-btn" onclick="bookTrain('Kanyakumari Express', '11:30 PM', '₹370')">Book Now</button>
+    </div>
+       <div class="train-card">
+        <h3>Train: Pallavan Express</h3>
+      <p>Time: 09:15 AM</p>
+      <p>Price: ₹360</p>
+      <button class="book-btn" onclick="bookTrain('Pallavan Express', '09:15 AM', '₹360')">Book Now</button>
+ </div>
+       <div class="train-card">
+        <h3>Train: Rockfort Express</h3>
+      <p>Time: 01:00 PM</p>
+      <p>Price: ₹370</p>
+      <button class="book-btn" onclick="bookTrain('Rockfort Express', '1:00 PM', '₹390')">Book Now</button>
+ </div>
+       <div class="train-card">
+        <h3>Train: Rameswaram Express</h3>
+      <p>Time: 7:30 PM</p>
+      <p>Price: ₹450</p>
+      <button class="book-btn" onclick="bookTrain('Rameswaram Express', '7:30 PM', '₹450')">Book Now</button>
+ </div>
+       <div class="train-card">
+        <h3>Train: Vande Bharat Express</h3>
+      <p>Time: 5:30 PM</p>
+      <p>Price: ₹670</p>
+      <button class="book-btn" onclick="bookTrain('Vande Bharat Express', '5:30 PM', '₹670')">Book Now</button>
+ </div>
+       <div class="train-card">
+        <h3>Train:Ananthapuri Express</h3>
+      <p>Time: 04:45 PM</p>
+      <p>Price: ₹770</p>
+      <button class="book-btn" onclick="bookTrain('Ananthapuri Express', '04:45 PM', '₹770')">Book Now</button>
+
+
+
+
+
+
+
+	
+  </div>
+<div id="train-booking-details">
+    <h3>Booking Confirmation</h3>
+    <p><strong>Train:</strong> <span id="train-name"></span></p>
+    <p><strong>Time:</strong> <span id="train-time"></span></p>
+    <p><strong>Price:</strong> <span id="train-price"></span></p>
+    <button id="confirm-train-btn">Confirm Booking</button>
+  </div>
+
+  <script>
+    function bookTrain(name, time, price) {
+      document.getElementById('train-booking-details').style.display = 'block';
+      document.getElementById('train-name').innerText = name;
+      document.getElementById('train-time').innerText = time;
+      document.getElementById('train-price').innerText = price;
+
+      localStorage.setItem('selectedTrain', JSON.stringify({ name, time, price }));
+    }
+
+    document.getElementById('confirm-train-btn').addEventListener('click', function() {
+      const booking = JSON.parse(localStorage.getItem('selectedTrain'));
+      if (booking) {
+        alert(
+          "✅ Train Booking Confirmed!\n\n" +
+          "Train: " + booking.name + "\n" +
+          "Time: " + booking.time + "\n" +
+          "Price: " + booking.price
+        );
+        localStorage.removeItem('selectedTrain');
+        document.getElementById('train-booking-details').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
