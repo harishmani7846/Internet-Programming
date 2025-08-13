@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Shopping Drag & Drop</title>
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet CSS for map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+  <h2>🛒 Online Shopping</h2>
+  <h2>Product Categories</h2>
+
+  <div class="products">
+    <div class="product">
+      <img src="download.jpeg" draggable="true" ondragstart="drag(event)" id="laptop">
+      <p>Laptop</p>
+      <img src="im.jpeg" draggable="true" ondragstart="drag(event)" id="laptop">
+      <p>Laptop</p>
+    </div>
+    <div class="product">
+      <img src="po.jpeg" draggable="true" ondragstart="drag(event)" id="phone">
+      <p>Phone</p>
+      <img src="phone2.jpeg" draggable="true" ondragstart="drag(event)" id="phone">
+      <p>Phone</p>
+    </div>
+  </div>
+
+  <div id="workspace" ondrop="drop(event)" ondragover="allowDrop(event)">
+    Drop Product Here
+  </div>
+
+  <h3>🎥 Watch Product Video</h3>
+
+  <iframe id="laptopVideo" width="560" height="315" src="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+  <iframe id="phoneVideo" width="560" height="315" src="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+  <h3>🛍 Purchase Form</h3>
+
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="product">Product:</label>
+    <select id="product" name="product">
+      <option value="Laptop">Laptop</option>
+      <option value="Phone">Phone</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- 🔊 Audio Section -->
+  <div class="audio-controls">
+    <h3>Background Music</h3>
+    <audio id="backgroundMusic" loop>
+      <source src="https://docs.google.com/uc?export=open&id=1Ha3Fa7iTYD4Rkh3AgfksLm_fYKeAOWyl" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="toggleMusic()">Play/Pause</button><br><br>
+    Volume: <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
+  </div>
+
+  <!-- 📍 Geolocation & Map -->
+  <h2>📍 Find Store Location</h2>
+  <button onclick="getLocation()">Get Store Location</button>
+  <p id="demo">Click the button to get your coordinates.</p>
+  <div id="map"></div>
+
+  <!-- Scripts -->
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+
+      document.getElementById("laptopVideo").style.display = "none";
+      document.getElementById("phoneVideo").style.display = "none";
+
+      if (data === "laptop") {
+        let laptopVideo = document.getElementById("laptopVideo");
+        laptopVideo.src = "https://www.youtube.com/embed/WG7l4GNcric?autoplay=1&mute=1";
+        laptopVideo.style.display = "block";
+      } else if (data === "phone") {
+        let phoneVideo = document.getElementById("phoneVideo");
+        phoneVideo.src = "https://www.youtube.com/embed/116uJFVpMl8?autoplay=1&mute=1";
+        phoneVideo.style.display = "block";
+      }
+    }
+
+    // Music Controls
+    const music = document.getElementById("backgroundMusic");
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    function setVolume(val) {
+      music.volume = val;
+    }
+
+    // Geolocation + Map
+    let map;
+    function getLocation() {
+      const demo = document.getElementById("demo");
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          demo.innerHTML = "Latitude: " + lat + "<br>Longitude: " + lon;
+
+          // Create Map
+          if (!map) {
+            map = L.map('map').setView([lat, lon], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+          } else {
+            map.setView([lat, lon], 13);
+          }
+
+          L.marker([lat, lon]).addTo(map).bindPopup("You are here").openPopup();
+
+        }, function() {
+          demo.innerHTML = "Unable to retrieve your location.";
+        });
+      } else {
+        demo.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+  </script>
+
+  <!-- Leaflet JS for map -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</body>
+</html>
